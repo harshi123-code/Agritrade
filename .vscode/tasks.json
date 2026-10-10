@@ -1,0 +1,110 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Run AgriTrade backend locally",
+			"type": "shell",
+			"command": "powershell.exe",
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-File",
+				"C:\\Users\\neela\\OneDrive\\AgriTrade\\backend\\run-local.ps1"
+			],
+			"isBackground": true
+		},
+		{
+			"label": "Restart AgriTrade backend with AgriAI",
+			"type": "shell",
+			"command": "powershell.exe",
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-File",
+				"C:\\Users\\neela\\OneDrive\\AgriTrade\\backend\\run-local.ps1"
+			],
+			"isBackground": true
+		},
+		{
+			"label": "Run AgriTrade frontend",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"--prefix",
+				"frontend",
+				"run",
+				"dev",
+				"--",
+				"--host",
+				"127.0.0.1"
+			],
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "Install Ollama",
+			"type": "shell",
+			"command": "winget",
+			"args": [
+				"install",
+				"--id",
+				"Ollama.Ollama",
+				"--exact",
+				"--accept-package-agreements",
+				"--accept-source-agreements",
+				"--silent"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Build AgriTrade frontend",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"--prefix",
+				"frontend",
+				"run",
+				"build"
+			],
+			"isBackground": false,
+			"problemMatcher": [
+				"$tsc"
+			]
+		},
+		{
+			"label": "Download AgriTrade local AI model",
+			"type": "shell",
+			"command": "ollama",
+			"args": [
+				"pull",
+				"llama3.2:1b"
+			],
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "Pull Ollama AgriTrade model",
+			"type": "shell",
+			"command": "C:\\Users\\neela\\AppData\\Local\\Programs\\Ollama\\ollama.exe",
+			"args": [
+				"pull",
+				"llama3.2:1b"
+			],
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "Inspect local service ports",
+			"type": "shell",
+			"command": "netstat",
+			"args": [
+				"-ano"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		}
+	]
+}
