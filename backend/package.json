@@ -1,0 +1,12 @@
+{
+  "name": "agritrade-backend-dev",
+  "private": true,
+  "scripts": {
+    "dev": "dotenv -e .env -- nodemon",
+    "start": "mvn -Dmaven.repo.local=target/m2repo spring-boot:run"
+  },
+  "devDependencies": {
+    "dotenv-cli": "^8.0.0",
+    "nodemon": "^3.1.10"
+  }
+}
