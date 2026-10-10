@@ -1,0 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root { --green: #345b3d; --ink: #202b23; --muted: #727b70; --paper: #faf8f0; --line: #e6e5d9; --body: 'DM Sans', 'Segoe UI', sans-serif; --display: 'Libre Baskerville', Georgia, serif; font-family: var(--body); color: var(--ink); background: var(--paper); font-synthesis: none; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
+* { box-sizing: border-box; }
+body { min-width: 320px; margin: 0; }
+button, input, select { font: inherit; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible { outline: 2px solid #728d5e; outline-offset: 3px; }
+::selection { color: white; background: var(--green); }
