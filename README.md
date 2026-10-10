@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # AgriTrade
 
 A modular full-stack AgriTrade capstone starter built with React + Vite, Axios, React Router, Spring Boot, Spring Data JPA, Spring Security and MySQL.
@@ -78,3 +79,7 @@ MongoDB Atlas can be configured alongside the existing MySQL data store with `MO
 - `PUT /api/orders/{id}/status` lets the listing farmer accept or reject a new order.
 
 Run frontend checks with `cd frontend; npm test; npm run lint; npm run build`. Run backend tests with `cd backend; .\mvnw.cmd test`.
+=======
+# Agritrade
+Java FullStack WebDevelopment
+>>>>>>> da78c0bfa996800a52b8797181aa839392245794
