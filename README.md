@@ -19,7 +19,7 @@ The Render Blueprint in `render.yaml` creates a Spring Boot API and a free Rende
 
 1. Push this repository to GitHub and import it into Render as a Blueprint.
 2. Choose the Singapore region and the free plan for the API and database. The free Render Postgres instance is limited to 1 GB and expires after 30 days.
-3. Add an AI provider key in Render. Configure `APP_AI_API_KEY`, `APP_AI_MODEL`, and `APP_AI_BASE_URL` for the provider you use. AgriAI cannot call the local Ollama instance from Render.
+3. To enable AI recommendations in the hosted app, configure `APP_AI_API_KEY`, `APP_AI_MODEL`, and `APP_AI_BASE_URL` for a hosted provider. This is optional for deployment; the local Ollama instance is not reachable from Render.
 4. Deploy the Netlify site from this repository. `netlify.toml` sets the Vite build and publish paths and points `VITE_API_URL` at `https://agritrade-neela-api.onrender.com/api`.
 5. Use the Netlify production site URL and the Render API URL to check the site. `GET /api/health` reports API and database status.
 
