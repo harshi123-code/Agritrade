@@ -1,0 +1,61 @@
+services:
+  - type: pserv
+    name: agritrade-neela-mysql
+    runtime: docker
+    plan: 0.5c-512mb
+    region: singapore
+    dockerfilePath: ./deploy/mysql/Dockerfile
+    dockerContext: .
+    disk:
+      name: agritrade-mysql-data
+      mountPath: /var/lib/mysql
+      sizeGB: 10
+    envVars:
+      - key: MYSQL_DATABASE
+        value: agritrade
+      - key: MYSQL_USER
+        value: agritrade
+      - key: MYSQL_PASSWORD
+        generateValue: true
+      - key: MYSQL_ROOT_PASSWORD
+        generateValue: true
+
+  - type: web
+    name: agritrade-neela-api
+    runtime: docker
+    plan: free
+    region: singapore
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    healthCheckPath: /api/health
+    envVars:
+      - key: DB_HOST
+        fromService:
+          type: pserv
+          name: agritrade-neela-mysql
+          property: host
+      - key: DB_PORT
+        value: "3306"
+      - key: DB_NAME
+        value: agritrade
+      - key: DB_USERNAME
+        value: agritrade
+      - key: DB_PASSWORD
+        fromService:
+          type: pserv
+          name: agritrade-neela-mysql
+          envVarKey: MYSQL_PASSWORD
+      - key: DB_POOL_INIT_FAIL_TIMEOUT_MS
+        value: "120000"
+      - key: SPRING_JPA_HIBERNATE_DDL_AUTO
+        value: update
+      - key: APP_JWT_SECRET
+        generateValue: true
+      - key: APP_CORS_ALLOWED_ORIGINS
+        value: "http://localhost:5173,https://*.netlify.app"
+      - key: APP_AI_API_KEY
+        sync: false
+      - key: APP_AI_MODEL
+        sync: false
+      - key: APP_AI_BASE_URL
+        sync: false

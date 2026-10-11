@@ -10,11 +10,31 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import com.agritrade.security.JwtAuthenticationFilter;
+import org.springframework.beans.factory.annotation.Value;
+import java.util.Arrays;
+import java.util.List;
 
 @Configuration
 @EnableMethodSecurity
 public class SecurityConfig {
+    @Bean
+    CorsConfigurationSource corsConfigurationSource(
+            @Value("${app.cors.allowed-origin-patterns:http://localhost:5173}") String allowedOrigins) {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOriginPatterns(Arrays.stream(allowedOrigins.split(","))
+                .map(String::trim).filter(origin -> !origin.isEmpty()).toList());
+        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
+        configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
+        configuration.setAllowCredentials(false);
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/api/**", configuration);
+        return source;
+    }
+
     @Bean
     PasswordEncoder passwordEncoder() { return new BCryptPasswordEncoder(); }
 
@@ -24,8 +44,7 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**", "/error").permitAll()
-                        .requestMatchers("/api/health/mongodb").permitAll()
+                        .requestMatchers("/api/auth/**", "/api/health/**", "/error").permitAll()
                         .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/crops/**").permitAll()
                         .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/market-data/**").permitAll()
                         .requestMatchers(org.springframework.http.HttpMethod.POST, "/api/crops/**").hasRole("FARMER")

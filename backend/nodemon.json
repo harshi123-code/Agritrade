@@ -2,5 +2,5 @@
   "watch": ["src/main"],
   "ext": "java,properties,sql,yml,yaml",
   "ignore": ["target/**"],
-  "exec": "mvn -Dmaven.repo.local=target/m2repo spring-boot:run"
+  "exec": "mvn -Dspring-boot.run.jvmArguments=-Djava.io.tmpdir=. -Dmaven.repo.local=target/m2repo spring-boot:run"
 }
