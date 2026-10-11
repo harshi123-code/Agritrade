@@ -13,21 +13,9 @@ Requirements: Node.js 22, Java 21, Maven 3.9+, and MySQL 8.
 
 The Vite development server proxies `/api` requests to `http://127.0.0.1:8080`.
 
-## Deploy with Render and Netlify
+## Local configuration
 
-The Render Blueprint in `render.yaml` creates a Spring Boot API and a free Render Postgres database. Render supplies the database credentials to the API without storing them in this repository. Initial production tables are created or updated by Hibernate. The free database expires 30 days after creation, and the free API spins down after 15 minutes without traffic.
-
-1. Push this repository to GitHub and import it into Render as a Blueprint.
-2. Choose the Singapore region and the free plan for the API and database. The free Render Postgres instance is limited to 1 GB and expires after 30 days.
-3. To enable AI recommendations in the hosted app, configure `APP_AI_API_KEY`, `APP_AI_MODEL`, and `APP_AI_BASE_URL` for a hosted provider. This is optional for deployment; the local Ollama instance is not reachable from Render.
-4. Deploy the Netlify site from this repository. `netlify.toml` sets the Vite build and publish paths and points `VITE_API_URL` at `https://agritrade-neela-api.onrender.com/api`.
-5. Use the Netlify production site URL and the Render API URL to check the site. `GET /api/health` reports API and database status.
-
-If Render assigns a different API hostname, update `VITE_API_URL` in Netlify and redeploy. The API allows `*.netlify.app` origins and local Vite development by default.
-
-## Database and environment variables
-
-The backend reads `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USERNAME`, and `DB_PASSWORD`. A complete `DB_URL` can override the generated PostgreSQL URL. Local Docker development can continue using MySQL. Never commit `.env` files or production credentials. Render generates `APP_JWT_SECRET` for the hosted API.
+The backend reads `DB_URL`, `DB_USERNAME`, and `DB_PASSWORD`; the example environment file configures local MySQL. Keep `.env` files and database credentials private. Set `APP_CORS_ALLOWED_ORIGINS` to the frontend origin when running the app from a different local address.
 
 ## API routes
 
