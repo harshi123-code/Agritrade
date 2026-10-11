@@ -1,25 +1,12 @@
-services:
-  - type: pserv
-    name: agritrade-neela-mysql
-    runtime: docker
-    plan: 0.5c-512mb
+databases:
+  - name: agritrade-neela-db
+    databaseName: agritrade
+    user: agritrade
+    plan: free
     region: singapore
-    dockerfilePath: ./deploy/mysql/Dockerfile
-    dockerContext: .
-    disk:
-      name: agritrade-mysql-data
-      mountPath: /var/lib/mysql
-      sizeGB: 10
-    envVars:
-      - key: MYSQL_DATABASE
-        value: agritrade
-      - key: MYSQL_USER
-        value: agritrade
-      - key: MYSQL_PASSWORD
-        generateValue: true
-      - key: MYSQL_ROOT_PASSWORD
-        generateValue: true
+    postgresMajorVersion: "18"
 
+services:
   - type: web
     name: agritrade-neela-api
     runtime: docker
@@ -30,21 +17,25 @@ services:
     healthCheckPath: /api/health
     envVars:
       - key: DB_HOST
-        fromService:
-          type: pserv
-          name: agritrade-neela-mysql
+        fromDatabase:
+          name: agritrade-neela-db
           property: host
       - key: DB_PORT
-        value: "3306"
+        fromDatabase:
+          name: agritrade-neela-db
+          property: port
       - key: DB_NAME
-        value: agritrade
+        fromDatabase:
+          name: agritrade-neela-db
+          property: database
       - key: DB_USERNAME
-        value: agritrade
+        fromDatabase:
+          name: agritrade-neela-db
+          property: user
       - key: DB_PASSWORD
-        fromService:
-          type: pserv
-          name: agritrade-neela-mysql
-          envVarKey: MYSQL_PASSWORD
+        fromDatabase:
+          name: agritrade-neela-db
+          property: password
       - key: DB_POOL_INIT_FAIL_TIMEOUT_MS
         value: "120000"
       - key: SPRING_JPA_HIBERNATE_DDL_AUTO
