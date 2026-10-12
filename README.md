@@ -15,7 +15,7 @@ The Vite development server proxies `/api` requests to `http://127.0.0.1:8080`.
 
 ## Local configuration
 
-The backend reads `DB_URL`, `DB_USERNAME`, and `DB_PASSWORD`; the example environment file configures local MySQL. Keep `.env` files and database credentials private. Set `APP_CORS_ALLOWED_ORIGINS` to the frontend origin when running the app from a different local address.
+The backend reads `SPRING_DATASOURCE_URL`, `SPRING_DATASOURCE_USERNAME`, and `SPRING_DATASOURCE_PASSWORD`; the example environment file configures local MySQL. Keep `.env` files and database credentials private. Set `APP_CORS_ALLOWED_ORIGINS` to the frontend origin when running the app from a different local address.
 
 ## API routes
 
