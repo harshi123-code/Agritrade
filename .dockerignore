@@ -10,6 +10,7 @@
 **/.env.*
 !**/.env.example
 =======
+<<<<<<< HEAD
 .git
 .gitignore
 .idea
@@ -20,5 +21,17 @@
 **/.env
 **/.env.*
 !**/.env.example
+=======
+.git
+.gitignore
+.idea
+.vscode
+**/node_modules
+**/target
+**/dist
+**/.env
+**/.env.*
+!**/.env.example
+>>>>>>> 6afb91dae240b29a22cb8633a3499655b31bdbf3
 >>>>>>> f50c31f2f3f933bc8e11cf138f2f4841deff1e41
 *.log
