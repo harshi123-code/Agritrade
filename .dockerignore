@@ -1,0 +1,24 @@
+<<<<<<< HEAD
+.git
+.gitignore
+.idea
+.vscode
+**/node_modules
+**/target
+**/dist
+**/.env
+**/.env.*
+!**/.env.example
+=======
+.git
+.gitignore
+.idea
+.vscode
+**/node_modules
+**/target
+**/dist
+**/.env
+**/.env.*
+!**/.env.example
+>>>>>>> f50c31f2f3f933bc8e11cf138f2f4841deff1e41
+*.log
