@@ -1,7 +1,17 @@
 import axios from 'axios'
 
+const defaultApiUrl = import.meta.env.DEV
+  ? '/api'
+  : 'https://agritrade-15.onrender.com/api'
+const configuredApiUrl = import.meta.env.VITE_API_URL?.replace(/\/+$/, '')
+const apiBaseUrl = configuredApiUrl
+  ? configuredApiUrl.endsWith('/api')
+    ? configuredApiUrl
+    : `${configuredApiUrl}/api`
+  : defaultApiUrl
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL?.replace(/\/$/, '') || '/api',
+  baseURL: apiBaseUrl,
   headers: { 'Content-Type': 'application/json' },
 })
 
