@@ -82,6 +82,8 @@ public class SecurityConfig {
 
                         // Public authentication and health endpoints
                         .requestMatchers(
+                                "/api",
+                                "/api/",
                                 "/api/auth/**",
                                 "/api/health/**"
                         ).permitAll()
