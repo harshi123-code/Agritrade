@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # AgriTrade
 
 AgriTrade is a React + Vite marketplace backed by Spring Boot and a relational database. It supports crop listings, user registration and sign-in, orders, dashboards, market data, and an AI assistant.
@@ -86,4 +87,8 @@ npm run build
 cd ..\backend
 mvn test
 ```
+>>>>>>> origin/main
+=======
+# Agritrade
+Java FullStack WebDevelopment
 >>>>>>> origin/main
