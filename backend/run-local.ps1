@@ -14,7 +14,6 @@ try {
     $env:SPRING_DATASOURCE_URL = $env:DB_URL
     $env:SPRING_DATASOURCE_USERNAME = $env:DB_USERNAME
     $env:SPRING_DATASOURCE_PASSWORD = $env:DB_PASSWORD
-    $env:SPRING_PROFILES_ACTIVE = 'local'
     Push-Location $PSScriptRoot
     & (Join-Path $PSScriptRoot 'mvnw.cmd') spring-boot:run
 }
@@ -26,7 +25,6 @@ finally {
     Remove-Item Env:SPRING_DATASOURCE_PASSWORD -ErrorAction SilentlyContinue
     Remove-Item Env:SPRING_DATASOURCE_USERNAME -ErrorAction SilentlyContinue
     Remove-Item Env:SPRING_DATASOURCE_URL -ErrorAction SilentlyContinue
-    Remove-Item Env:SPRING_PROFILES_ACTIVE -ErrorAction SilentlyContinue
     foreach ($setting in @(
         @{ Name = 'APP_AI_API_KEY'; Value = $originalAiApiKey },
         @{ Name = 'APP_AI_MODEL'; Value = $originalAiModel },

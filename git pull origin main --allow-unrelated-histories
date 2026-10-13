@@ -1,0 +1,15 @@
+[33mcommit b693ca67b2389696a0bfd971590cd065a240c447[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: harshi123-code <neela.harshitha95@gmail.com>
+Date:   Mon Oct 12 20:39:46 2026 +0530
+
+    Merge GitHub changes
+
+ README.md                                          |  2 [32m+[m[31m-[m
+ backend/.env.example                               |  8 [32m+[m[31m--[m
+ backend/pom.xml                                    |  5 [31m--[m
+ backend/render.env.example                         |  8 [32m+[m[31m--[m
+ .../main/resources/application-local.properties    |  8 [32m+[m[31m--[m
+ backend/src/main/resources/application.properties  |  8 [32m+[m[31m--[m
+ .../com/agritrade/AgriTradeApplicationTests.java   |  2 [32m+[m[31m-[m
+ docker-compose.yml                                 | 59 [32m++[m[31m--------------------[m
+ 8 files changed, 22 insertions(+), 78 deletions(-)
