@@ -30,7 +30,6 @@ The backend reads `DB_URL`, `DB_USERNAME`, and `DB_PASSWORD`; the example enviro
 - `GET /api/market-data`
 - `POST /api/orders`, `GET /api/orders`, and `PUT /api/orders/{id}/status`
 - `GET /api/health` checks database connectivity
-- `GET /api/health/mongodb` checks the optional MongoDB connection
 
 ## Checks
 
@@ -74,7 +73,6 @@ The backend reads `DB_URL`, `DB_USERNAME`, and `DB_PASSWORD`; the example enviro
 - `GET /api/market-data`
 - `POST /api/orders`, `GET /api/orders`, and `PUT /api/orders/{id}/status`
 - `GET /api/health` checks database connectivity
-- `GET /api/health/mongodb` checks the optional MongoDB connection
 
 ## Checks
 
