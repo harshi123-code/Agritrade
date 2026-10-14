@@ -26,7 +26,7 @@ public class SecurityConfig {
 
     @Bean
     CorsConfigurationSource corsConfigurationSource(
-            @Value("${app.cors.allowed-origin-patterns:https://comforting-cuchufli-dcf330.netlify.app,https://stellar-vacherin-74459d.netlify.app,http://localhost:5173}")
+            @Value("${app.cors.allowed-origin-patterns:https://comforting-cuchufli-dcf330.netlify.app,https://stellar-vacherin-74459d.netlify.app,https://agritrade-frontendg24.netlify.app,http://localhost:5173}")
             String allowedOrigins) {
 
         CorsConfiguration configuration = new CorsConfiguration();
