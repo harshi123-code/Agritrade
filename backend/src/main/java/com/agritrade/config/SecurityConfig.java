@@ -1,4 +1,3 @@
-
 package com.agritrade.config;
 
 import java.util.Arrays;
@@ -27,7 +26,7 @@ public class SecurityConfig {
 
     @Bean
     CorsConfigurationSource corsConfigurationSource(
-            @Value("${app.cors.allowed-origin-patterns:http://localhost:5173}")
+            @Value("${app.cors.allowed-origin-patterns:https://comforting-cuchufli-dcf330.netlify.app,http://localhost:5173}")
             String allowedOrigins) {
 
         CorsConfiguration configuration = new CorsConfiguration();
@@ -77,10 +76,8 @@ public class SecurityConfig {
                 )
                 .authorizeHttpRequests(auth -> auth
 
-                        // Allow public access to the homepage
                         .requestMatchers("/", "/error").permitAll()
 
-                        // Public authentication and health endpoints
                         .requestMatchers(
                                 "/api",
                                 "/api/",
@@ -88,25 +85,21 @@ public class SecurityConfig {
                                 "/api/health/**"
                         ).permitAll()
 
-                        // Public crop listing
                         .requestMatchers(
                                 org.springframework.http.HttpMethod.GET,
                                 "/api/crops/**"
                         ).permitAll()
 
-                        // Public market data
                         .requestMatchers(
                                 org.springframework.http.HttpMethod.GET,
                                 "/api/market-data/**"
                         ).permitAll()
 
-                        // Only FARMER can create crops
                         .requestMatchers(
                                 org.springframework.http.HttpMethod.POST,
                                 "/api/crops/**"
                         ).hasRole("FARMER")
 
-                        // All remaining endpoints require authentication
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(

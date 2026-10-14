@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const defaultApiUrl = import.meta.env.DEV
   ? '/api'
-  : 'https://agritrade-15.onrender.com/api'
+  : 'https://agritrade-16.onrender.com/api'
 const configuredApiUrl = import.meta.env.VITE_API_URL?.replace(/\/+$/, '')
 const apiBaseUrl = configuredApiUrl
   ? configuredApiUrl.endsWith('/api')
