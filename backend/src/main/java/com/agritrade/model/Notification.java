@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
+import jakarta.persistence.Column;
 import java.time.Instant;
 
 @Entity
@@ -18,6 +19,7 @@ public class Notification {
     private String type;
     @Lob
     private String message;
+    @Column(name = "is_read", nullable = false)
     private boolean read;
     private Instant createdAt = Instant.now();
 
