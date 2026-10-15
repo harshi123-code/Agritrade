@@ -15,7 +15,7 @@ import NotificationsPage from './pages/NotificationsPage.jsx'
 
 function EntryRoute() {
   const { user } = useAuth()
-  return <Navigate to={user ? '/dashboard' : '/login'} replace />
+  return <Navigate to={user ? '/dashboard' : '/marketplace'} replace />
 }
 
 createRoot(document.getElementById('root')).render(
@@ -25,8 +25,8 @@ createRoot(document.getElementById('root')).render(
         <Routes>
           <Route path="/" element={<EntryRoute />} />
           <Route path="/marketplace" element={<App />} />
-          <Route path="/login" element={<AuthPage />} />
-          <Route path="/register" element={<AuthPage register />} />
+          <Route path="/login" element={<Navigate to="/register" replace />} />
+          <Route path="/register" element={<AuthPage />} />
           <Route path="/market-desk" element={<MarketDeskPage />} />
           <Route element={<ProtectedRoute />}>
             <Route path="/dashboard" element={<DashboardPage />} />
