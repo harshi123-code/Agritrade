@@ -76,7 +76,7 @@ function App() {
       <header className="topbar">
         <a className="brand" href="#home" aria-label="AgriTrade home"><span className="brand-mark">A</span> agri<span>trade</span></a>
         <nav className="primary-nav" aria-label="Main navigation"><a className="active" href="#market">Marketplace</a><Link to="/market-desk">Market Desk</Link><a href="#insights">Market insights</a></nav>
-        <div className="top-actions">{user ? <><Link className="top-link" to="/dashboard">Dashboard</Link><Link className="top-link" to="/agri-ai">Ask AgriAI</Link>{user.role === 'FARMER' && <button className="button button-dark top-action" onClick={() => setDialogOpen(true)}>+ Sell crops</button>}<button className="button button-dark top-action" onClick={logout}>Log out</button></> : <button className="button button-dark top-action" onClick={() => navigate('/register')}>Join AgriTrade</button>}</div>
+        <div className="top-actions">{user ? <><Link className="top-link" to="/dashboard">Dashboard</Link><Link className="top-link" to="/agri-ai">Ask AgriAI</Link>{user.role === 'FARMER' && <button className="button button-dark top-action" onClick={() => setDialogOpen(true)}>+ Sell crops</button>}<button className="button button-dark top-action" onClick={logout}>Log out</button></> : <><Link className="top-link" to="/login">Sign in</Link><button className="button button-dark top-action" onClick={() => navigate('/register')}>Join AgriTrade</button></>}</div>
       </header>
 
       <main id="home">

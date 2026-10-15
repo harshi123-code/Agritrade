@@ -4,7 +4,7 @@ import { useAuth } from './authContext'
 export default function ProtectedRoute({ roles }) {
   const { user } = useAuth()
   const location = useLocation()
-  if (!user) return <Navigate to="/register" replace state={{ from: location.pathname }} />
+  if (!user) return <Navigate to="/login" replace state={{ from: location.pathname }} />
   if (roles && !roles.includes(user.role)) return <Navigate to="/dashboard" replace />
   return <Outlet />
 }

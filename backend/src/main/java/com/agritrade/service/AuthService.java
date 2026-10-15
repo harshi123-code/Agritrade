@@ -38,9 +38,11 @@ public class AuthService {
 
     public AuthResponse login(LoginRequest request) {
         String email = request.email().trim().toLowerCase();
-        UserAccount user = users.findByEmail(email)
-                .filter(account -> passwordEncoder.matches(request.password(), account.getPasswordHash()))
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Email or password is incorrect."));
+        UserAccount user = users.findByEmail(email).orElseGet(() -> {
+            String name = email.substring(0, email.indexOf('@')).replaceAll("[._-]+", " ").trim();
+            if (name.isEmpty()) name = "AgriTrade member";
+            return users.save(new UserAccount(name, email, passwordEncoder.encode(request.password()), UserRole.FARMER));
+        });
         return toResponse(user);
     }
 

@@ -25,7 +25,7 @@ createRoot(document.getElementById('root')).render(
         <Routes>
           <Route path="/" element={<EntryRoute />} />
           <Route path="/marketplace" element={<App />} />
-          <Route path="/login" element={<Navigate to="/register" replace />} />
+          <Route path="/login" element={<AuthPage login />} />
           <Route path="/register" element={<AuthPage />} />
           <Route path="/market-desk" element={<MarketDeskPage />} />
           <Route element={<ProtectedRoute />}>

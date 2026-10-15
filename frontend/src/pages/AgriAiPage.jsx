@@ -64,7 +64,7 @@ export default function AgriAiPage() {
       </div>
       {error && <p className="chat-error" role="alert">{error}</p>}
       <form className="chat-composer" onSubmit={sendQuestion}><textarea ref={composer} rows="2" value={question} onChange={(event) => setQuestion(event.target.value)} onKeyDown={(event) => { if (event.key === 'Enter' && !event.shiftKey) { event.preventDefault(); event.currentTarget.form.requestSubmit() } }} placeholder={user ? 'Ask a question or continue the conversation...' : 'Join AgriTrade to ask AgriAI'} disabled={!user || loading} aria-label="Your question" /><button className="button button-dark" disabled={!user || loading || !question.trim()} aria-label="Send message">Send <span aria-hidden="true">↑</span></button></form>
-      {!user && <p className="chat-signin">Join AgriTrade to use the assistant. <Link to="/register">Join AgriTrade</Link></p>}
+      {!user && <p className="chat-signin">Sign in or <Link to="/register">Join AgriTrade</Link> to use the assistant. <Link to="/login">Sign in</Link></p>}
     </section>
     <p className="ai-caution">For crop protection, health, and government program decisions, verify advice with official agricultural extension sources.</p><footer className="dashboard-footer"><Link to="/marketplace">← Return to marketplace</Link><span>AgriTrade · AgriAI</span></footer>
   </main>
